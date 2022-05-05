@@ -2,6 +2,9 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "joi-password-complexity": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.2",
     "nodemon": "^2.0.16"
   },
@@ -9,7 +12,6 @@
   "version": "1.0.0",
   "description": "Backend built in Express JS for the rockstars final program",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
