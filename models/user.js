@@ -29,9 +29,9 @@ const validate = (user) => {
         month: Joi.string().required(),
         day: Joi.string().required(),
         year: Joi.string().required(),
-        likedSongs: Joi.array().required(),
-        playlist: Joi.array().required(),
-        boughtSongs: Joi.array().required(),
+        likedSongs: Joi.array().default([]),
+        playlist: Joi.array().default([]),
+        boughtSongs: Joi.array().default([]),
         isAdmin: Joi.boolean(),
     });
     return schema.validate(user);
