@@ -10,10 +10,10 @@ const userSchema = new mongoose.Schema({
     month: { type: String, required: true },
     day: { type: String, required: true },
     year: { type: String, required: true },
-    likedSongs: { type: Array, required: true },
-    playlist: { type: Array, required: true },
-    boughtSongs: { type: Array, required: true },
-    isAdmin: { type: Boolean, required: true, default: false },
+    likedSongs: { type: Array, default: [] },
+    playlist: { type: Array, default: []  },
+    boughtSongs: { type: Array, default: []  },
+    isAdmin: { type: Boolean, default: false },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -32,7 +32,7 @@ const validate = (user) => {
         likedSongs: Joi.array().required(),
         playlist: Joi.array().required(),
         boughtSongs: Joi.array().required(),
-        isAdmin: Joi.boolean().required(),
+        isAdmin: Joi.boolean(),
     });
     return schema.validate(user);
 }
