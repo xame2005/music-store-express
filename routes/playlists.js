@@ -16,7 +16,7 @@ router.post('/', auth, async (req, res) => {
     user.playlists.push(playlist._id);
     await user.save();
 
-    res.status(201).send(playlist);
+    res.status(201).send({ data: playlist });
 }
 );
 
@@ -120,11 +120,11 @@ router.get("/", auth, async (req, res) => {
 router.delete("/:id",[validObjectId, auth], async (req, res) => {
     const user = await User.findById(req.user._id);
     const playlist = await Playlist.findById(req.params.id);
-    if(!user._id.equals(playlist.user)) return res.status(401).send('You are not authorized to delete this playlist.');
+    if(!user._id.equals(playlist.user)) return res.status(403).send('You are not authorized to delete this playlist.');
 
-    const index = user.playlists.indexOf(playlist._id);
+/*     const index = user.playlists.indexOf(playlist._id);
     user.playlists.splice(index, 1);
-    await user.save();
+ */    await user.save();
     await playlist.remove();
     res.status(200).send({message: "Playlist deleted successfully"});
 }
